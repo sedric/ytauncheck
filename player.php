@@ -3,7 +3,7 @@ if (preg_match ("/(youtube.com|youtu.be)/",$_GET["v"]))
 {
   preg_match ("/.*v=([^#&]*)/",$_GET["v"], $match);
   $id = $match[1];
-  $request = urldecode($_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"]);
+  $request = urldecode($_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]);
   $baseurl = substr($request, 0, strpos($request, "?"));
   $url = $baseurl . "?v=" . $id;
   header('HTTP/1.1 301');
